@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
+import AddUser from "./AddUser";
 
 const List = () => {
   const [data, setData] = useState([]);
@@ -71,11 +72,20 @@ const List = () => {
     }
   };
 
+  const handleAdd = (newUser) => {
+    setData([...data, newUser]);
+    toast.success("Data Added Successfully!");
+  };
+
+  const handleCancel = () => {
+    setshowPopup(false);
+  };
+
   return (
     <>
       <div className="container">
         <div className="pagination-pages">
-          <button>
+          <button onClick={() => setshowPopup(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "rgb(76,182,57)", border: "none" }}>
             Add User <span style={{ marginTop: "5px" }}></span>
           </button>
           <div>
@@ -165,9 +175,14 @@ const List = () => {
               })}
           </tbody>
         </table>
+        {showPopup && <AddUser onAdd={handleAdd} onCancel={handleCancel} />}
+        
       </div>
     </>
   );
 };
 
 export default List;
+
+
+
