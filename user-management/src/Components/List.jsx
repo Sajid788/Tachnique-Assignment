@@ -46,7 +46,7 @@ const List = () => {
       );
       setData(updatedData);
       setEdit(null);
-      toast.success("Data Updated Successfully!");
+      toast.success("User Updated Successfully!");
     } catch (error) {
       console.log(error);
       setEdit(null);
@@ -58,6 +58,19 @@ const List = () => {
     setEdit(index);
   };
   
+//Delete Function
+ const handleDelete = async (index) => {
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/users/${index}`);
+      const newData = [...data];
+      newData.splice(index, 1);
+      setData(newData);
+      toast.success("User deleted successfully!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="container">
@@ -66,9 +79,9 @@ const List = () => {
             Add User <span style={{ marginTop: "5px" }}></span>
           </button>
           <div>
-            <button className="pagination-btn">Prev</button>
-            <span>Page: </span>
-            <button className="pagination-btn">Next</button>
+            <button className="pagination-btn" disabled={page == 1} onClick={() => setPage(page - 1)}>Prev</button>
+            <span>Page: {page}</span>
+            <button className="pagination-btn" disabled={page == 2} onClick={() => setPage(page + 1)}>Next</button>
           </div>
         </div>
         <table>
@@ -143,7 +156,7 @@ const List = () => {
                           Edit <span></span>
                         </button>
                       )}
-                      <button>
+                      <button onClick={() => handleDelete(index)}>
                         Delete<span></span>
                       </button>
                     </td>
