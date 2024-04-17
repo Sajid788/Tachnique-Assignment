@@ -1,7 +1,7 @@
 # Tachnique-Assignment
 
 ## Introduction
-The User Management Dashboard is a web page designed to display user information in the form of table, including their ID, firstName, lastName, Email and Department. Users can perform various operations such as creating, reading, updating, and deleting (CRUD) user data directly from the dashboard.
+The User Management Dashboard is a web page where users can view, create, update, and delete user information displayed in a table format. It includes fields such as ID, first name, last name, email, and department. Users have the ability to perform CRUD operations on the data directly from the dashboard.
 
 ## Tech Stack
 *Frontend :** React, Redux, Css
