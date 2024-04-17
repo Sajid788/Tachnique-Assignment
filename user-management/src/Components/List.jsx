@@ -34,12 +34,22 @@ const List = () => {
   }, []);
 
   //Edit Function
+  
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleUpdate = async (index) => {
     try {
       const updatedData = [...data];
       const currentUserData = updatedData[index];
       const newName = name.trim() !== "" ? name.trim() : currentUserData.name.split(' ')[0];
       const newLastName = lastName.trim() !== "" ? lastName.trim() : currentUserData.name.split(' ')[1];
+      if (email.trim() !== "" && !isValidEmail(email.trim())) {
+        toast.error("Please enter a valid email address.");
+        return;
+      }
       const newEmail = email.trim() === "" ? currentUserData.email : email;
       const newDepartment = department.trim() === "" ? currentUserData.company.name : department;
     
