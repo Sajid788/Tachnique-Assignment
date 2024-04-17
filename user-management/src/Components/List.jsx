@@ -129,7 +129,7 @@ const List = () => {
           </thead>
           <tbody>
             {data
-              ?.slice((page - 1) * 10, (page - 1) * 10 + 10)
+              ?.slice((page - 1) * 9, (page - 1) * 9 + 9)
               .map(function (ele, index) {
                 return (
                   <tr key={index}>

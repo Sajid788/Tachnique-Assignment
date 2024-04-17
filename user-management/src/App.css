@@ -72,14 +72,14 @@ input{
 
   .add-user{
     position: fixed;
-    top: 48%;
+    top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 355px;
-    height: 420px;
+    height: 400px;
     padding: 26px 0;
     background: MintCream;
     border-radius: 8px;
@@ -97,4 +97,43 @@ input{
     /* border: none; */
   }
 
- 
+  @media only screen and (max-width: 768px) {
+    th,
+    td {
+        width: auto;
+        font-size: 0.8rem;
+    }
+
+    input {
+        max-width: 100%;
+    }
+
+    .pagination-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    th,
+    td {
+        width: auto;
+        font-size: 0.8rem;
+        padding: 8px; 
+        flex-direction: column;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .pagination-pages {
+        flex-direction: column;
+    }
+
+    .pagination-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
