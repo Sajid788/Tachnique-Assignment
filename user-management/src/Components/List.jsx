@@ -35,19 +35,26 @@ const List = () => {
 
   //Edit Function
   const handleUpdate = async (index) => {
-    const combinedName = name + " " + lastName;
     try {
       const updatedData = [...data];
+      const currentUserData = updatedData[index];
+      const newName = name.trim() !== "" ? name.trim() : currentUserData.name.split(' ')[0];
+      const newLastName = lastName.trim() !== "" ? lastName.trim() : currentUserData.name.split(' ')[1];
+      const newEmail = email.trim() === "" ? currentUserData.email : email;
+      const newDepartment = department.trim() === "" ? currentUserData.company.name : department;
+    
       updatedData[index] = {
-        ...updatedData[index],
-        name: combinedName || data[index].name,
-        email: email || data[index].email,
-        company: { name: department || data[index].company.name },
+        ...currentUserData,
+        name: newName + " " + newLastName,
+        email: newEmail,
+        company: { name: newDepartment },
       };
+    
       await axios.put(
         `https://jsonplaceholder.typicode.com/users/${index + 1}`,
         updatedData[index]
       );
+      
       setData(updatedData);
       setEdit(null);
       toast.success("User Updated Successfully!");
@@ -56,6 +63,7 @@ const List = () => {
       setEdit(null);
       toast.error("Something went wrong!");
     }
+    
   };
 
   const handleEdit = (index) => {
