@@ -18,9 +18,7 @@ link:-
   ```bash
   npm install
 ```
-```bash
-  npm run server
-  npm start
+  npm install
 ```
 ## API Endpoints
 "/users" endpoint used for performing CRUD opreration.
