@@ -16,11 +16,11 @@ link:-
 - Pagination is being implemented.
 
   ```bash
-npm install 
+  npm install
 ```
-
 ```bash
-npm start
+  npm run server
+  npm start
 ```
 ## API Endpoints
 "/users" endpoint used for performing CRUD opreration.
