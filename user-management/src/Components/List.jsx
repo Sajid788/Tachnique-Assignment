@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
+import { FaPlus } from "react-icons/fa6";
+import { MdEdit, MdOutlineBrowserUpdated } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import AddUser from "./AddUser";
 
 const List = () => {
@@ -30,7 +33,7 @@ const List = () => {
     getRequest();
   }, []);
 
-  //Edit Function 
+  //Edit Function
   const handleUpdate = async (index) => {
     const combinedName = name + " " + lastName;
     try {
@@ -58,9 +61,9 @@ const List = () => {
   const handleEdit = (index) => {
     setEdit(index);
   };
-  
-//Delete Function
- const handleDelete = async (index) => {
+
+  //Delete Function
+  const handleDelete = async (index) => {
     try {
       await axios.delete(`https://jsonplaceholder.typicode.com/users/${index}`);
       const newData = [...data];
@@ -74,7 +77,6 @@ const List = () => {
 
   const handleAdd = (newUser) => {
     setData([...data, newUser]);
-    toast.success("Data Added Successfully!");
   };
 
   const handleCancel = () => {
@@ -85,14 +87,26 @@ const List = () => {
     <>
       <div className="container">
         <div className="pagination-pages">
-          <button onClick={() => setshowPopup(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "rgb(76,182,57)", border: "none" }}>
-            Add User <span style={{ marginTop: "5px" }}></span>
+          <button
+            onClick={() => setshowPopup(true)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "teal",
+              borderRadius: "8px",
+              border: "none",
+              color: "white",
+              padding: "5px 18px",
+              fontFamily: "bold",
+            }}
+          >
+            Add User{" "}
+            <span style={{ marginTop: "5px" }}>
+              {" "}
+              <FaPlus />
+            </span>
           </button>
-          <div>
-            <button className="pagination-btn" disabled={page == 1} onClick={() => setPage(page - 1)}>Prev</button>
-            <span>Page: {page}</span>
-            <button className="pagination-btn" disabled={page == 2} onClick={() => setPage(page + 1)}>Next</button>
-          </div>
         </div>
         <table>
           <thead>
@@ -158,16 +172,51 @@ const List = () => {
                     </td>
                     <td className="actions-btn">
                       {edit === index ? (
-                        <button onClick={() => handleUpdate(index)}>
-                          Update <span></span>
+                        <button
+                          style={{
+                            backgroundColor: "SeaGreen",
+                            fontWeight: "bold",
+                            color: "white",
+                            borderRadius: "5px",
+                          }}
+                          onClick={() => handleUpdate(index)}
+                        >
+                          Update{" "}
+                          <span>
+                            <MdOutlineBrowserUpdated />
+                          </span>
                         </button>
                       ) : (
-                        <button onClick={() => handleEdit(index)}>
-                          Edit <span></span>
+                        <button
+                          style={{
+                            backgroundColor: "SeaGreen",
+                            fontWeight: "bold",
+                            color: "white",
+                            borderRadius: "5px",
+                          }}
+                          onClick={() => handleEdit(index)}
+                        >
+                          Edit{" "}
+                          <span>
+                            {" "}
+                            <MdEdit />
+                          </span>
                         </button>
                       )}
-                      <button onClick={() => handleDelete(index)}>
-                        Delete<span></span>
+                      <button
+                        style={{
+                          backgroundColor: "Crimson",
+                          fontWeight: "bold",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "5px",
+                        }}
+                        onClick={() => handleDelete(index)}
+                      >
+                        Delete
+                        <span>
+                          <MdDelete />
+                        </span>
                       </button>
                     </td>
                   </tr>
@@ -175,14 +224,28 @@ const List = () => {
               })}
           </tbody>
         </table>
+        <Toaster />
         {showPopup && <AddUser onAdd={handleAdd} onCancel={handleCancel} />}
-        
+        <div className="pagination-container">
+            <button
+              className="pagination-btn"
+              disabled={page == 1}
+              onClick={() => setPage(page - 1)}
+            >
+              Prev
+            </button>
+            <span style={{ fontFamily: "bold" }}>Page: {page}</span>
+            <button
+              className="pagination-btn"
+              disabled={page == 2}
+              onClick={() => setPage(page + 1)}
+            >
+              Next
+            </button>
+          </div>
       </div>
     </>
   );
 };
 
 export default List;
-
-
-
