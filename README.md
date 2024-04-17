@@ -20,18 +20,6 @@ link:- https://usersa.netlify.app
 ```
   npm start
 ```
-user-management/
-├── src/
-├──├── components/
-├──├──├── AddUser.jsx
-├──├──├── Header.jsx
-├──├──├── List.jsx
-├──├── app.js
-├──├── index.js
-├── .gitignore
-├── package-lock.json
-├── package.json
-├── README.md
 
 ## Video Walkthrough of the project
 [Click here to open the video](https://drive.google.com/file/d/1BhYzVQdIfL2VTMjw5VlPnO-jMwJz4REe/view?usp=sharing)
