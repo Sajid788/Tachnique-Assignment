@@ -4,7 +4,7 @@
 The User Management Dashboard is a web page where users can view, create, update, and delete user information displayed in a table format. It includes fields such as ID, first name, last name, email, and department. Users have the ability to perform CRUD operations on the data directly from the dashboard.
 
 ## Tech Stack
-*Frontend :** React, Redux, Css
+*Frontend :** React, javascript, Css
 
 ## Frontend Deploy Link
 link:- https://usersa.netlify.app
