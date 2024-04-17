@@ -20,6 +20,12 @@ link:- https://usersa.netlify.app
 ```
   npm start
 ```
+
+
+## Video Walkthrough of the project
+[Click here to open the video](https://drive.google.com/file/d/1BhYzVQdIfL2VTMjw5VlPnO-jMwJz4REe/view?usp=sharing)
+
+
 ## API Endpoints
 "/users" endpoint used for performing CRUD opreration.
 
