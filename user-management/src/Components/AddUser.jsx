@@ -18,6 +18,10 @@ const AddUser = ({ onAdd, onCancel }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!/^\d+$/.test(formData.id) || formData.id <= 0) {
+      toast.error("ID must be a positive integer.");
+      return;
+    }
     try {
       const combinedName = `${formData.firstName} ${formData.lastName}`;
       const postData = {
@@ -59,6 +63,7 @@ const AddUser = ({ onAdd, onCancel }) => {
             type="number"
             name="id"
             placeholder="Enter Id"
+            required
             value={formData.id}
             onChange={handleInputChange}
           />
@@ -66,12 +71,14 @@ const AddUser = ({ onAdd, onCancel }) => {
             type="text"
             name="firstName"
             placeholder="Enter firstName"
+            required
             value={formData.firstName}
             onChange={handleInputChange}
           />
           <input
             type="text"
             name="lastName"
+            required
             placeholder="Enter lastName"
             value={formData.lastName}
             onChange={handleInputChange}
@@ -79,6 +86,7 @@ const AddUser = ({ onAdd, onCancel }) => {
           <input
             type="email"
             name="email"
+            required
             placeholder="Enter Email"
             value={formData.email}
             onChange={handleInputChange}
@@ -86,6 +94,7 @@ const AddUser = ({ onAdd, onCancel }) => {
           <input
             type="text"
             name="department"
+            required
             placeholder="Enter department"
             value={formData.department}
             onChange={handleInputChange}
